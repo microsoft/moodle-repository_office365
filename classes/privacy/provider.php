@@ -21,13 +21,17 @@
  * @copyright (C) 2014 onwards Microsoft, Inc. (http://microsoft.com/)
  */
 
-defined('MOODLE_INTERNAL') || die();
+namespace repository_office365\privacy;
 
-$plugin->version = 2020020300;
-$plugin->requires = 2019111800;
-$plugin->release = '3.8.0.0';
-$plugin->component = 'repository_office365';
-$plugin->maturity = MATURITY_STABLE;
-$plugin->dependencies = [
-   'local_o365' => 2020020300,
-];
+
+class provider implements \core_privacy\local\metadata\null_provider {
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:metadata';
+    }
+}
